@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { Search, SlidersHorizontal, X, Sparkles } from "lucide-react";
+import { Search, SlidersHorizontal, X, Glasses } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useMemo } from "react";
@@ -93,7 +93,7 @@ export default function ShopPage() {
         </div>
         <div className="relative flex items-center gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/10">
-            <Sparkles className="h-7 w-7" />
+            <Glasses className="h-7 w-7" />
           </div>
           <div>
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -303,7 +303,9 @@ export default function ShopPage() {
         </motion.div>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filtered.map((frame: Frame, index: number) => (
+          {filtered.map((frame: Frame, index: number) => {
+            const isOutOfStock = frame.status === "out_of_stock" || frame.stockQuantity === 0;
+            return (
             <motion.div
               key={frame.frameId}
               initial={{ opacity: 0, y: 20 }}
@@ -315,7 +317,7 @@ export default function ShopPage() {
                   whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <Card className="group overflow-hidden rounded-2xl border-primary/10 transition-shadow hover:shadow-xl hover:shadow-primary/10">
+                  <Card className={`group overflow-hidden rounded-2xl border-primary/10 transition-shadow hover:shadow-xl hover:shadow-primary/10 ${isOutOfStock ? "opacity-60 grayscale" : ""}`}>
                     <div className="relative aspect-square bg-secondary/50">
                       {frame.frameMedia?.[0]?.mediaUrl ? (
                         <Image
@@ -341,13 +343,15 @@ export default function ShopPage() {
                           </svg>
                         </div>
                       )}
-                      {frame.status === "out_of_stock" && (
-                        <Badge
-                          variant="destructive"
-                          className="absolute right-2 top-2 rounded-lg"
-                        >
-                          Out of Stock
-                        </Badge>
+                      {isOutOfStock && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <Badge
+                            variant="secondary"
+                            className="rounded-lg bg-black/70 text-white px-3 py-1"
+                          >
+                            Preorder Available
+                          </Badge>
+                        </div>
                       )}
                     </div>
                     <CardContent className="p-4">
@@ -379,7 +383,7 @@ export default function ShopPage() {
                 </motion.div>
               </Link>
             </motion.div>
-          ))}
+          )})}
         </div>
       )}
 

@@ -53,15 +53,22 @@ export default function CartPage() {
         {/* Items */}
         <div className="space-y-4 lg:col-span-2">
           {items.map((item) => (
-            <Card key={item.cartItemId}>
+            <Card key={item.cartItemId} className={item.isPreorder ? "border-amber-500/50" : ""}>
               <CardContent className="flex gap-4 p-4">
-                <div className="h-24 w-24 shrink-0 rounded-lg bg-muted/50" />
+                <div className={`h-24 w-24 shrink-0 rounded-lg bg-muted/50 ${item.isPreorder ? "opacity-60 grayscale" : ""}`} />
                 <div className="flex-1">
                   <div className="flex items-start justify-between">
                     <div>
-                      <p className="text-xs uppercase text-muted-foreground">
-                        {item.frame.brand}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-xs uppercase text-muted-foreground">
+                          {item.frame.brand}
+                        </p>
+                        {item.isPreorder && (
+                          <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-600">
+                            Preorder
+                          </span>
+                        )}
+                      </div>
                       <p className="font-semibold">{item.frame.frameName}</p>
                       {item.lensType && (
                         <p className="text-xs text-muted-foreground">

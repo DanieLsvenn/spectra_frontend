@@ -21,7 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Sparkles } from "lucide-react";
+import { Glasses } from "lucide-react";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 
@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
             transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
             className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30"
           >
-            <Sparkles className="h-7 w-7" />
+            <Glasses className="h-7 w-7" />
           </motion.div>
           <CardTitle className="text-2xl font-bold">Reset Password</CardTitle>
           <CardDescription>

@@ -18,7 +18,7 @@ import {
   Menu,
   LogOut,
   LayoutDashboard,
-  Sparkles,
+  Glasses,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -70,7 +70,7 @@ export function Header() {
             transition={{ duration: 0.5 }}
             className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/30"
           >
-            <Sparkles className="h-5 w-5" />
+            <Glasses className="h-5 w-5" />
           </motion.div>
           <span className="text-xl font-bold tracking-tight">
             <span className="gradient-text">SPECTRA</span>
@@ -201,7 +201,7 @@ export function Header() {
               <div className="mt-8 flex flex-col gap-2">
                 <div className="mb-4 flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                    <Sparkles className="h-5 w-5" />
+                    <Glasses className="h-5 w-5" />
                   </div>
                   <span className="text-xl font-bold gradient-text">
                     SPECTRA

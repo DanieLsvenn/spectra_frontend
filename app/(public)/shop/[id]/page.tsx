@@ -110,7 +110,7 @@ export default function FrameDetailPage({
     ? [frame.color]
     : ["Matte Black", "Matte Red", "Transparent Blue", "Silver"];
 
-  const isOutOfStock = frame.status === "out_of_stock";
+  const isOutOfStock = frame.status === "out_of_stock" || frame.stockQuantity === 0;
 
   const handleAddToCart = () => {
     if (selectedLensType?.requiresPrescription && !selectedPrescription) {
@@ -194,10 +194,20 @@ export default function FrameDetailPage({
           <h1 className="mt-1 text-3xl font-bold">{frame.frameName}</h1>
           <p className="mt-2 text-3xl font-bold">${totalPrice.toFixed(2)}</p>
 
-          {frame.status === "out_of_stock" && (
-            <Badge variant="destructive" className="mt-2">
-              Out of Stock
-            </Badge>
+          {isOutOfStock && (
+            <div className="mt-3 rounded-lg border border-amber-500/50 bg-amber-500/10 p-3">
+              <div className="flex items-center gap-2">
+                <Badge className="bg-amber-500 hover:bg-amber-600">
+                  Preorder
+                </Badge>
+                <span className="text-sm font-medium text-amber-700 dark:text-amber-400">
+                  Currently out of stock
+                </span>
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">
+                This item will be shipped when it becomes available.
+              </p>
+            </div>
           )}
 
           <Separator className="my-6" />

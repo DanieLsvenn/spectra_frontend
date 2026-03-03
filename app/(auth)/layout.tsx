@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { Glasses } from "lucide-react";
 
 export default function AuthLayout({
   children,
@@ -25,7 +25,7 @@ export default function AuthLayout({
         <div className="absolute bottom-0 left-0 right-0 p-12">
           <Link href="/" className="mb-8 inline-flex items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
-              <Sparkles className="h-5 w-5 text-white" />
+              <Glasses className="h-5 w-5 text-white" />
             </div>
             <span className="text-2xl font-bold text-white">SPECTRA</span>
           </Link>
@@ -50,7 +50,7 @@ export default function AuthLayout({
         <div className="absolute left-4 top-4 lg:hidden">
           <Link href="/" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Sparkles className="h-4 w-4" />
+              <Glasses className="h-4 w-4" />
             </div>
             <span className="text-lg font-bold gradient-text">SPECTRA</span>
           </Link>
